@@ -1,8 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Header from "@/components/Header";
+import Layout from "@/components/Layout";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ['400', '500', '600', '700']
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +21,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <head>
+        <title>Reaction - quiz</title>
+        <link rel="icon" type="image/x-con" href="https://i0.wp.com/www.reaction-club.com/wp-content/uploads/2021/05/cropped-cropped-logo-reaction-bird.png?fit=32%2C32&ssl=1" />
+      </head>
+      <body className={poppins.className}>
+        <main className="max-w-[400px] mx-auto p-4">
+          <Layout>
+            <Header/>
+            {children}
+          </Layout>
+        </main>
+      </body>
     </html>
   );
 }
