@@ -24,7 +24,7 @@ function WorkStyle() {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="font-semibold text-2xl mb-10 text-center">What is your team's <br />work style?</h1>
+      <h1 className="font-semibold text-2xl mb-10 text-center">What is your team&apos;s <br />work style?</h1>
       <div className="grid grid-cols-2 gap-5">
         {data.map(style => (
           <Fragment key={style.text}>
