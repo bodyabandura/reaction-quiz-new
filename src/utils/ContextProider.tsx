@@ -8,15 +8,6 @@ type AdminDetail = {
   last_Name: string
 }
 
-type SelectedDate = {
-  startDate: any,
-  endDate: any
-}
-
-type CreateStepChallenge = {
-  selectedDate: SelectedDate
-}
-
 interface IStates {
   goal: string | null,
   work_style: string | null,
@@ -31,7 +22,7 @@ interface IStates {
   improve_team: string[],
   activities: string[],
   events: string[],
-  create_step_challenge: CreateStepChallenge,
+  onboarding_call_date: string,
   admin_detail: AdminDetail,
 }
 
@@ -49,12 +40,7 @@ const defaultAnswers: IStates = {
   improve_team: [],
   activities: [],
   events: [],
-  create_step_challenge: {
-    selectedDate: {
-      startDate: null,
-      endDate: null
-    }
-  },
+  onboarding_call_date: '',
   admin_detail: {
     email: '',
     first_Name: '',

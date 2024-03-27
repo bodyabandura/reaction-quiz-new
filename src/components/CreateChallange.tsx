@@ -1,67 +1,20 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
-import { DateRangePicker, Range } from "react-date-range";
-import "react-date-range/dist/styles.css";
-import "react-date-range/dist/theme/default.css";
-import { toast, Toaster } from "sonner";
+import React, { useContext, useState } from "react";
 import { StateManager } from "@/utils/ContextProider";
-
+import { useCalendlyEventListener, InlineWidget } from "react-calendly";
+import { Toaster, toast } from "sonner";
 
 const CreateChallange = () => {
-  const { handleNextStep, setAnswers } = useContext(StateManager);
-  const today = new Date()
 
-  const [selectedDate, setSelectedDate] = useState({
-    startDate: today,
-    endDate: undefined as Date | undefined, // explicitly provide the type here
-    key: "selection",
+  const { handleNextStep } = useContext(StateManager);
+  const [isEventScheduled, setEventScheduled] = useState(false)
+
+  useCalendlyEventListener({
+    onEventScheduled: () => setEventScheduled(!isEventScheduled)
   });
 
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
-
-  const handleDateChange = (ranges: any) => {
-    setSelectedDate({
-      startDate: ranges.selection.startDate,
-      endDate: ranges.selection.endDate,
-      key: "selection",
-    });
-  };
-
-  const handleOutsideClick = (e: MouseEvent) => {
-    const dateRangePickerContainer = document.querySelector(
-      ".rdrDateRangeWrapper"
-    );
-
-    if (
-      dateRangePickerContainer &&
-      !dateRangePickerContainer.contains(e.target as Node) &&
-      isDatePickerOpen
-    ) {
-      setIsDatePickerOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener("mousedown", handleOutsideClick);
-
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isDatePickerOpen]);
-
   const handleNextClick = () => {
-    if (selectedDate.endDate === undefined) {
-      toast.error("Select End Date");
-      return false;
-    }
-    if (selectedDate.startDate) {
-      const data = {
-        selectedDate: selectedDate,
-      };
-      setAnswers(prev => ({ ...prev, create_step_challenge: { ...prev.create_step_challenge, selectedDate }}))
-      handleNextStep();
-      toast.success("Saving Your Details");
-    }
+    isEventScheduled ? handleNextStep() : toast.error('Please schedule the onboarding meeting');
   };
 
   return (
@@ -72,27 +25,17 @@ const CreateChallange = () => {
         </h1>
         <p className="text-xl text-[#979797] mb-5">Let’s set it up together</p>
       </div>
-      <div>
-        <Toaster richColors position={"top-center"} closeButton={true} />
-      </div>
-      <div className="flex justify-center">
-        <DateRangePicker
-          ranges={[selectedDate as Range]}
-          onChange={handleDateChange}
-          moveRangeOnFirstSelection={false}
-          months={1}
-          direction="horizontal"
-          minDate={today}
-        />
-      </div>
+      <InlineWidget
+        url="https://calendly.com/yonatanmalka"
+        styles={{height: '600px'}}
+      />
       <div className="px-[20px]">
         <button
           onClick={handleNextClick}
           className="uppercase text-[#000] mt-[14px] md:mt-[20px] py-[12px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]"
-        >
-          Next
-        </button>
+        >Next</button>
       </div>
+      <Toaster richColors position={"top-center"} closeButton={true}/>
     </div>
   );
 };

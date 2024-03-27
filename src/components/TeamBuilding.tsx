@@ -2,7 +2,6 @@
 
 import { useContext, useState } from "react";
 import TeamBuildingCard from "./teamBuildingCard";
-import Image from "next/image";
 import { StateManager } from "@/utils/ContextProider";
 
 const data = [
@@ -35,7 +34,7 @@ function TeamBuilding() {
         controlsList="nodownload"
         poster="/poster.png"
       >
-        <source src="/reaction_quiz.mp4" type="video/mp4"/>
+        <source src="/reaction_club.mp4" type="video/mp4"/>
       </video>
       <h1 className="text-4xl font-bold leading-normal">TEAM BUILDING ACTIVITY</h1>
       <p className="font-semibold text-[18px]">CUSTOMIZED TO YOUR NEEDS</p>

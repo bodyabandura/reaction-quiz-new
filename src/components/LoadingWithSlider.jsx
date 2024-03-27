@@ -56,7 +56,7 @@ const LoadingWithSlider = () => {
     return (
         <div className="flex mt-[60px] flex-col gap-[20px] justify-center items-center">
             <div className="text-[14px] text-[#343434] font-bold mt-[-10px]">
-                Analysing team’s engagement score...
+                Creating engagement score...
             </div>
             <div className="w-[100%] mt-[10px]">
                 <h1 className="text-center mb-[5px] text-[#343434] font-bold text-[20px] md:text-[22px]">
@@ -76,9 +76,9 @@ const LoadingWithSlider = () => {
                 </div>
             </div>
             <div className="mt-[20px] sm:mt-[30px] text-center text-[14px] md:text-[22px] font-bold text-[#5553FE]">
-                5,000+ Companies<br/>
+                Reaction data warehouse<br/>
                 <span className="text-[16px] font-semibold text-[#343434]">
-                    have chosen Reaction
+                    Comparing to baseline
                 </span>
             </div>
             <div className="mt-[20px] w-full">

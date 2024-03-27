@@ -15,17 +15,17 @@ const freq2 = {
 
 const Charts = () => {
 
-    const { handleNextStep } = useContext(StateManager)
+    const { handleNextStep, answers } = useContext(StateManager)
 
-    const months = ["Communication", "Team morale", "Healthy habits"]
+    const months = answers.improve_team
 
     return(
         <div className="">
             <div className="mt-[30px]  flex flex-row justify-between">
-                <p className="text-[#000] font-semibold text-[14px]">Plan success prediction</p>
+                <p className="text-[#000] font-semibold text-[14px]">Recommandion</p>
 
                 <span className="bg-[#5553FE] py-[1px] md:py-[3px] px-[6px] md:px-[8px] rounded-[6px] md:rounded-[8px] flex flex-row gap-[3px] md:gap-[5px] items-center">
-                    <p className="text-[#fff] text-[12px] font-medium">Result: High</p>
+                    <p className="text-[#fff] text-[12px] font-medium">Quarterly plan 📆</p>
                 </span>
             </div>
             <p className="text-[#979797] text-[12px] mt-[10px] font-normal mr-[60px]">There is a high chance your team will see positive impact on team dynamics and engagement</p>
@@ -52,7 +52,7 @@ const Charts = () => {
 
            <div className="px-[40px] mt-[70px]">
                <button onClick={() => handleNextStep()} className="text-[#000] mt-[14px] md:mt-[20px] py-[8px] md:py-[14px] flex items-center justify-center bg-[#F9B22D] rounded-[32px] w-[100%] font-bold text-[14px]">
-                   Show me plan
+                   Get a plan
                </button>
            </div>
         </div>

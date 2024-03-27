@@ -26,7 +26,7 @@ function Stress() {
         {data.map(participate => (
           <Fragment key={participate.text}>
             <div
-              className={`relative py-7 px-12 ${chosenOption === participate.text ? 'bg-[#F9B22D4D] border-[1px] border-[#F9B22D]' : 'bg-[#F5F5F5] border-[1px] border-[#F5F5F5]'}`}
+              className={`relative py-7 px-12 rounded-xl ${chosenOption === participate.text ? 'bg-[#F9B22D4D] border-[1px] border-[#F9B22D]' : 'bg-[#F5F5F5] border-[1px] border-[#F5F5F5]'}`}
               onClick={() => nextQuestion(participate.text)}
             >
               <div className="font-semibold flex-col justify-center gap-2 text-[18px]">

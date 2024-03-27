@@ -29,7 +29,7 @@ function Known() {
         {data.map(conflict => (
           <Fragment key={conflict.text}>
             <div
-              className={`p-2 ${chosenOption === conflict.text ? 'bg-[#F9B22D4D] border-[1px] border-[#F9B22D]' : 'bg-[#F5F5F5] border-[1px] border-[#F5F5F5]'}`}
+              className={`p-2 rounded-xl ${chosenOption === conflict.text ? 'bg-[#F9B22D4D] border-[1px] border-[#F9B22D]' : 'bg-[#F5F5F5] border-[1px] border-[#F5F5F5]'}`}
               onClick={() => nextQuestion(conflict.text)}
             >
               <span className="font-semibold flex items-center gap-1 text-[18px]">

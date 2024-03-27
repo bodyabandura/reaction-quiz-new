@@ -29,7 +29,7 @@ export default function Home() {
 
   return (
     <>
-      {currentStep === 0 && <TeamBuilding/>}
+      {/* {currentStep === 0 && <TeamBuilding/>} */}
       {currentStep === 1 && <TeamSize/>}
       {currentStep === 2 && <WorkStyle/>}
       {currentStep === 3 && <WorkSchedule/>}
@@ -48,7 +48,7 @@ export default function Home() {
       {currentStep === 16 && <Activities/>}
       {currentStep === 17 && <Events/>}
       {currentStep === 18 && <Loading smallText="Analysing data" mainText="Plan is being created" step={19}/>}
-      {currentStep === 19 && <CreateChallange/>}
+      {currentStep === 0 && <CreateChallange/>}
       {currentStep === 20 && <ThankYou/>}
     </>
   );
