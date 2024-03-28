@@ -18,16 +18,10 @@ const CreateChallange = () => {
   };
 
   return (
-    <div className="mt-[30px] relative">
-      <div className="flex flex-col justify-center items-center">
-        <h1 className="text-2xl font-semibold text-center">
-          Onboarding Call
-        </h1>
-        <p className="text-xl text-[#979797] mb-5">Let’s set it up together</p>
-      </div>
+    <div>
       <InlineWidget
-        url="https://calendly.com/yonatanmalka"
-        styles={{height: '600px'}}
+        url="https://calendly.com/d/ck53-7qc-f4n/team-building-plan"
+        styles={{height: '80vh'}}
       />
       <div className="px-[20px]">
         <button

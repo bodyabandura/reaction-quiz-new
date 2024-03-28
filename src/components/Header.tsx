@@ -7,6 +7,12 @@ import { useContext } from "react";
 function Header() {
   const { currentStep, setCurrentStep, percentage } = useContext(StateManager)
 
+  if(currentStep === 19) {
+    return  (
+      null
+    )
+  }
+
   return (
     <div className="mb-16">
       {![0, 5, 12, 18].includes(currentStep) ? (<>

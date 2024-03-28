@@ -61,8 +61,9 @@ export const StateManager = createContext<{
   setCurrentStep: () => {},
   percentage: 0,
   answers: defaultAnswers,
-  setAnswers: () => {}
+  setAnswers: () => {},
 })
+
 
 function Provider({ children } : { children: React.ReactNode }) {
 

@@ -1,8 +1,9 @@
 "use client"
 
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import TeamBuildingCard from "./teamBuildingCard";
 import { StateManager } from "@/utils/ContextProider";
+import Image from "next/image";
 
 const data = [
   {text: 'Bond my team', image: '/images/group_of_people1.png'},
@@ -14,6 +15,7 @@ const data = [
 function TeamBuilding() {
 
   const [chosenOption, setChosenOption] = useState("")
+  const [isVideoShown, setVideoShown] = useState(true)
   const { handleNextStep, setAnswers } = useContext(StateManager)
 
   const handleNextClick = (option: string) => {
@@ -22,20 +24,44 @@ function TeamBuilding() {
     handleNextStep()
   }
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setVideoShown(false)
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex flex-col items-center text-center gap-2 mt-[-50px]">
-      <video
-        className="w-full mb-5"
-        playsInline
-        loop
-        muted
-        controls
-        autoPlay
-        controlsList="nodownload"
-        poster="/poster.png"
-      >
-        <source src="/reaction_club.mp4" type="video/mp4"/>
-      </video>
+    <div className="flex flex-col items-center text-center gap-2 mt-[-50px] relative">
+      <div className="mb-6">
+        <Image
+          src={`${isVideoShown ? '/cross.svg' : '/less_than.svg'}`}
+          width={30}
+          height={30}
+          alt="image"
+          className="absolute left-1 top-1 z-10 flex items-center"
+          onClick={() => setVideoShown(!isVideoShown)}
+        />
+        {isVideoShown && <video
+          className="w-full mb-5"
+          playsInline
+          loop
+          muted
+          controls
+          autoPlay
+          controlsList="nodownload"
+          poster="/poster.png"
+        >
+          <source src="/reaction_club.mp4" type="video/mp4"/>
+        </video>}
+      </div>
       <h1 className="text-4xl font-bold leading-normal">TEAM BUILDING ACTIVITY</h1>
       <p className="font-semibold text-[18px]">CUSTOMIZED TO YOUR NEEDS</p>
       <p className="text-[#979797]">1-MINUTE QUIZ</p>

@@ -32,7 +32,7 @@ function TeamBuildingCard({ text, image, chosenOption, setChosenOption, handleNe
         alt="image"
         className="self-center m-3"
       />
-      <div className="bg-[#3C8AF0] text-white leading-loose">{text}</div>
+      <div className="bg-[#3C8AF0] text-white leading-loose text-[14px]">{text}</div>
     </div>
   );
 }
