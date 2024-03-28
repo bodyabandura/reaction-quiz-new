@@ -18,9 +18,9 @@ function Events() {
     const selectedIndex = newSelected.indexOf(option);
 
     if (selectedIndex === -1) {
-        newSelected.push(option);
+      newSelected.push(option);
     } else {
-        newSelected.splice(selectedIndex, 1);
+      newSelected.splice(selectedIndex, 1);
     }
 
     setAnswers(prev => ({ ...prev, events: newSelected }))
